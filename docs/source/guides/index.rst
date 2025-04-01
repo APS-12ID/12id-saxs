@@ -9,4 +9,6 @@ Guides show how to use certain features of this instrument.
     :maxdepth: 2
     :glob:
 
-    *dm*
+    dm
+    template_creation
+    qserver_service
