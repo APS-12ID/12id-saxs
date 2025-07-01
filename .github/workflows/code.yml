@@ -104,7 +104,7 @@ jobs:
         shell: bash -l {0}
         run: |
           set -vxeuo pipefail
-          pip install -e .
+          pip install -e .[dev]
 
       - name: Run tests with pytest & coverage
         shell: bash -l {0}
@@ -131,6 +131,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_FLAG_NAME: ${{ matrix.python-version }} # -${{ matrix.redis-version }}
           COVERALLS_PARALLEL: true
+
+      - name: IPython Startup Test
+        shell: bash -l {0}
+        run: |
+          set -vxeuo pipefail
+          ipython -c "from apsbits.demo_instrument.startup import *"
 
   # https://coveralls-python.readthedocs.io/en/latest/usage/configuration.html#github-actions-support
   coveralls:
